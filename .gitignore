@@ -1,3 +1,5 @@
+.idea
+
 # Logs
 logs
 *.log
@@ -19,6 +21,8 @@ pids
 lib-cov
 
 # Coverage directory used by tools like istanbul
+frontend/coverage-report
+backend/coverage-report
 coverage
 *.lcov
 
@@ -137,3 +141,18 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# Playwright
+playwright-report/
+test-results/
+
+# Coverage
+htmlcov/
+.coverage

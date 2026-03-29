@@ -1,0 +1,18 @@
+name: Deploy Production
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: Version to deploy
+        required: true
+        type: string
+
+jobs:
+  deploy-staging:
+    # Let's assume prod environment is protected by manual review
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Mock"
+          echo "Pretend to deploy ${{ inputs.version }}"

@@ -1,0 +1,59 @@
+name: Pull request
+on:
+  pull_request: {}
+
+concurrency:
+  cancel-in-progress: true
+  group: "${{ github.event.pull_request.number }}"
+
+jobs:
+  pull-request:
+    env:
+      CI: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: frontend/package.json
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.14
+
+      - name: Python unit/integrations tests
+        working-directory: backend
+        run: |
+          pip install -r requirements.txt
+          pytest -v
+
+      - name: TypeScript unit/component tests
+        working-directory: frontend
+        run: |
+          npm ci 
+          npm run coverage
+
+      - name: Static code analysis | quality gates
+        run: |
+          echo "Mock"
+
+      # Let's assume there is a bit more complex logic here
+      - name: Deploy preview environment | backend
+        working-directory: backend
+        run: |
+          nohup uvicorn app.main:app --reload --port 8000 > uvicorn.log &
+
+      - name: Deploy preview environment | frontend
+        working-directory: frontend
+        run: |
+          nohup npm run dev > vite.log &
+
+      - name: Run E2E tests
+        working-directory: e2e
+        run: |
+          npm ci
+          npx playwright install chromium
+          npx playwright test --workers=4
+
+      - name: Test reports
+        run: |
+          echo "Mock"

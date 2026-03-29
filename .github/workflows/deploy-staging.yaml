@@ -1,0 +1,13 @@
+name: Deploy staging
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-staging:
+    environment: staging
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Mock"

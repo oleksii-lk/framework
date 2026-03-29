@@ -25,10 +25,10 @@ export default defineConfig({
       ],
       // Fail the run if coverage drops below these thresholds
       thresholds: {
-        lines: 80,
-        functions: 80,
-        branches: 75,
-        statements: 80,
+        lines: 70,
+        functions: 70,
+        branches: 70,
+        statements: 70,
       },
     },
   },

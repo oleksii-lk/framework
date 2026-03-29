@@ -34,12 +34,12 @@ export default defineConfig({
     {
       command: "cd ../backend && uvicorn app.main:app --port 8000",
       port: parseInt(new URL(API_URL).port || "8000"),
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: true,
     },
     {
       command: "cd ../frontend && npm run dev",
       port: parseInt(new URL(FRONTEND_URL).port || "5173"),
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: true,
     },
   ],
 });

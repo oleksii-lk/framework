@@ -1,6 +1,6 @@
-# auth-testing-lab
+# E2E testing lab
 
-A learning project for practicing unit, integration, and e2e testing.
+A learning project for demonstrating approaches to unit, integration, and e2e testing.
 
 **Stack:**
 - Frontend: React + TypeScript (Vite)
@@ -8,51 +8,6 @@ A learning project for practicing unit, integration, and e2e testing.
 - Unit/Component tests: Vitest + Testing Library
 - API tests: Pytest
 - E2E tests: Playwright
-
----
-
-## Project structure
-
-```
-auth-testing-lab/
-├── backend/
-│   ├── app/
-│   │   ├── config.py       # constants (secret key, algorithm)
-│   │   ├── users.py        # in-memory user store + password helpers
-│   │   ├── auth.py         # JWT create/decode logic
-│   │   └── main.py         # FastAPI app + routes
-│   ├── tests/
-│   │   ├── unit/
-│   │   │   ├── test_auth.py    # unit tests for JWT functions
-│   │   │   └── test_users.py   # unit tests for user lookup + auth
-│   │   └── integration/
-│   │       └── test_api.py     # HTTP-level tests for /login and /me
-│   ├── pytest.ini
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── api/auth.ts         # fetch wrappers for the API
-│   │   ├── hooks/useAuth.ts    # auth state management hook
-│   │   ├── components/
-│   │   │   └── LoginForm.tsx   # "dumb" form component
-│   │   ├── pages/
-│   │   │   ├── LoginPage.tsx   # login page (connects form + hook)
-│   │   │   └── DashboardPage.tsx # protected page
-│   │   └── tests/
-│   │       ├── setup.ts            # jest-dom matchers
-│   │       ├── LoginForm.test.tsx  # component unit tests
-│   │       ├── auth-api.test.ts    # API client unit tests (fetch mocked)
-│   │       └── useAuth.test.tsx    # hook tests (api mocked)
-│   ├── vite.config.ts
-│   └── package.json
-│
-└── e2e/
-    ├── tests/
-    │   └── login.spec.ts   # full login/logout flow
-    ├── playwright.config.ts
-    └── package.json
-```
 
 ---
 
@@ -99,8 +54,8 @@ Then open http://localhost:5173
 **Test accounts:**
 | Username | Password    |
 |----------|-------------|
-| alice    | password123 |
-| bob      | secret456   |
+| test     | test        |
+
 
 ---
 
@@ -138,7 +93,7 @@ npx playwright test --ui        # interactive UI mode
 
 ---
 
-## Testing concepts illustrated
+## Testing tech stack
 
 | Test type   | Tool       | What it tests | Speed | Where |
 |-------------|------------|---------------|-------|-------|
